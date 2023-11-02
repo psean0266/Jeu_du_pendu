@@ -28,25 +28,55 @@ namespace Jeu_du_pendu
         }
         static void DevinerMot(string mot)
         {
-            //var lettreDevinez = new List<char>();
+            var lettreDevinee = new List<char>();
+            const int NB_VIES = 6;
+            int vieRestantes = NB_VIES;
 
-            //while (true)
-            //{
-            //    AfficherMot(mot, lettreDevinez);
-            //    Console.WriteLine();
-            //    var lettre = DemanderUneLettre();
-            //    if (mot.Contains(lettre))
-            //    {
-            //        Console.WriteLine("Cette lettre est dans le mot");
-            //        lettreDevinez.Add(lettre);
+            while (vieRestantes > 0)
+            {
+                Console.WriteLine("Nombres de vie restantes: " + vieRestantes);
+                AfficherMot(mot, lettreDevinee);
+                Console.WriteLine();
+                var lettre = DemanderUneLettre();
+                Console.Clear();
 
-            //    } else
-            //    {
-            //        Console.WriteLine("Cette lettre n'est pas dans le mot");
-            //    }
+                if (mot.Contains(lettre))
+                {
+                    Console.WriteLine("La lettre existe ");
+                    lettreDevinee.Add(lettre);
+                }
+                else
+                {
+                    Console.WriteLine("Erreur: la lettre n'existe pas");
+                    vieRestantes--;
+                    Console.WriteLine("Nombre de vie restante "+vieRestantes);
+                }
 
-            //}
- 
+
+
+                //AfficherMot(mot, lettreDevinee);
+                //Console.WriteLine();
+                //var lettre = DemanderUneLettre();
+                //Console.Clear();
+
+                //if (mot.Contains(lettre))
+                //{
+                //    Console.WriteLine("Cette lettre est dans le mot");
+                //    lettreDevinee.Add(lettre);
+
+                //}
+                //else
+                //{
+                //    Console.WriteLine("Cette lettre n'est pas dans le mot");
+                //}
+
+            }
+               
+            if (vieRestantes == 0)
+            {
+                Console.WriteLine("PERDU ! Le mot était : "+mot );
+            }
+
 
         }
 
@@ -73,15 +103,15 @@ namespace Jeu_du_pendu
         {
             string mot = "ELEPHANT";
 
-            char lettre = DemanderUneLettre();
+            //char lettre = DemanderUneLettre();
 
-            //AfficherMot(mot, new List<char> { 'E','T','L','P' });
+            //AfficherMot(mot, new List<char> { 'E', 'T', 'L', 'P' });
 
-            AfficherMot(mot, new List<char> { lettre });
+            //AfficherMot(mot, new List<char> { lettre });
 
             //DevinerMot(mot);
 
-          //  DevinerMot(mot);
+            DevinerMot(mot);
 
 
 
