@@ -30,6 +30,8 @@ namespace Jeu_du_pendu
         static void DevinerMot(string mot)
         {
             var lettreDevinee = new List<char>();
+            var lettresExclue = new List<char>();
+
             const int NB_VIES = 6;
             int vieRestantes = NB_VIES;
 
@@ -60,11 +62,12 @@ namespace Jeu_du_pendu
                 else
                 {
                     Console.WriteLine("Erreur: la lettre n'existe pas");
+                    lettresExclue.Add(lettre);
                     vieRestantes--;
                     Console.WriteLine("Nombre de vie restante "+vieRestantes);
                 }
 
-
+                Console.WriteLine("Le mot ne contient pas les lettres : " + String.Join(", ", lettresExclue));
 
                 //AfficherMot(mot, lettreDevinee);
                 //Console.WriteLine();
