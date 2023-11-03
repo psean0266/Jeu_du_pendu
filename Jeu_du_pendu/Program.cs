@@ -66,8 +66,13 @@ namespace Jeu_du_pendu
                 else
                 {
                     Console.WriteLine("Erreur: la lettre n'existe pas");
-                    lettresExclue.Add(lettre);
-                    vieRestantes--;
+                    if (!lettresExclue.Contains(lettre))
+                    {
+                        lettresExclue.Add(lettre);
+                        vieRestantes--;
+                    }
+                    else { Console.WriteLine("Vous avez déjà saisi la lettre  " + lettre  ); }    
+                   
                     Console.WriteLine("Nombre de vie restante "+vieRestantes);
                 }
 
@@ -75,6 +80,7 @@ namespace Jeu_du_pendu
                 {
                     Console.WriteLine("Le mot ne contient pas les lettres : " + String.Join(", ", lettresExclue));
                 }
+
                
                 //AfficherMot(mot, lettreDevinee);
                 //Console.WriteLine();
