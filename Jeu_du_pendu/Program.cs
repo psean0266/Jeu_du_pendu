@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization.Formatters;
 
 namespace Jeu_du_pendu
 {
@@ -34,7 +35,6 @@ namespace Jeu_du_pendu
 
             while (vieRestantes > 0)
             {
-                Console.WriteLine("Nombres de vie restantes: " + vieRestantes);
                 AfficherMot(mot, lettreDevinee);
                 Console.WriteLine();
                 var lettre = DemanderUneLettre();
@@ -44,6 +44,18 @@ namespace Jeu_du_pendu
                 {
                     Console.WriteLine("La lettre existe ");
                     lettreDevinee.Add(lettre);
+                    //bool b =  ToutesLettresDevinees(mot,lettreDevinee);
+                    // if (b)
+                    // {
+                    //     break;
+                    // }
+
+                   if( ToutesLettresDevinees(mot, lettreDevinee))
+                    {
+                      //  Console.WriteLine("GAGNE") ;
+                        //return;
+                        break;
+                    }
                 }
                 else
                 {
@@ -76,7 +88,46 @@ namespace Jeu_du_pendu
             {
                 Console.WriteLine("PERDU ! Le mot était : "+mot );
             }
+            else
+            {
+                AfficherMot(mot, lettreDevinee);
+                Console.WriteLine();
 
+                Console.WriteLine("GAGNE");
+            }
+
+        }
+
+        static bool ToutesLettresDevinees(string mot, List<char> lettres)
+        {
+
+            //for(int i = 0; i < lettres.Count; i++)
+
+            //{
+            //    mot = mot.Replace(lettres[i].ToString(), "");
+            //}
+
+            //if(mot.Trim() == "")
+            //{
+            //    Console.WriteLine("Vous aviez trouvez toutes les lettre");
+            //    return true;
+            //} else  
+            //{ 
+            //    return false;
+            //}
+
+
+            foreach (var lettre in lettres)
+
+            {
+                mot = mot.Replace(lettre.ToString(), "");
+            }
+
+            if (mot.Length==0)
+            {
+                return true;
+            }
+                return false;
 
         }
 
