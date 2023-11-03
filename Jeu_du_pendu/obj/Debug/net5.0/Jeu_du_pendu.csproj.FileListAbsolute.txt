@@ -14,3 +14,4 @@ C:\Users\AbdoulayePangnonKOUL\source\repos\Jonathan\Jeu_du_pendu\Jeu_du_pendu\ob
 C:\Users\AbdoulayePangnonKOUL\source\repos\Jonathan\Jeu_du_pendu\Jeu_du_pendu\obj\Debug\net5.0\Jeu_du_pendu.pdb
 C:\Users\AbdoulayePangnonKOUL\source\repos\Jonathan\Jeu_du_pendu\Jeu_du_pendu\obj\Debug\net5.0\Jeu_du_pendu.genruntimeconfig.cache
 C:\Users\AbdoulayePangnonKOUL\source\repos\Jonathan\Jeu_du_pendu\Jeu_du_pendu\obj\Debug\net5.0\ref\Jeu_du_pendu.dll
+C:\Users\AbdoulayePangnonKOUL\source\repos\Jonathan\Jeu_du_pendu\Jeu_du_pendu\bin\Debug\net5.0\mots.txt

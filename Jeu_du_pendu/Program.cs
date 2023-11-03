@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Runtime.Serialization.Formatters;
 using AsciiArt;
 
@@ -168,9 +169,18 @@ namespace Jeu_du_pendu
             }
 
         }
+
+        static string[] ChargerLesMots(string nomFichier)
+        {
+           return File.ReadAllLines(nomFichier);
+        }
+
         static void Main(string[] args)
         {
-            string mot = "ELEPHANT";
+
+            var mots = ChargerLesMots("mots.txt");
+
+            string mot = mots[0].Trim();
 
             //char lettre = DemanderUneLettre();
 
