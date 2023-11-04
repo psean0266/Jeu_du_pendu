@@ -172,15 +172,37 @@ namespace Jeu_du_pendu
 
         static string[] ChargerLesMots(string nomFichier)
         {
-           return File.ReadAllLines(nomFichier);
+            try
+            {
+                return File.ReadAllLines(nomFichier);
+            }
+            catch(Exception ex) 
+            {
+                Console.WriteLine("Erreur de lecture du fichier : " + nomFichier + "(" +ex.Message+")");
+            }
+
+            return null;
         }
 
         static void Main(string[] args)
         {
-
+            
             var mots = ChargerLesMots("mots.txt");
+           
 
-            string mot = mots[0].Trim();
+            if ((mots==null) || (mots.Length == 0))
+            {
+                Console.WriteLine("La liste de mots est vide ");
+            }
+            else
+            {
+                Random r = new Random();
+                int i =r.Next(mots.Length);
+                string mot = mots[i].Trim().Trim().ToUpper();
+                DevinerMot(mot);
+
+            }
+          //  string mot = mots[0].Trim().ToUpper();
 
             //char lettre = DemanderUneLettre();
 
@@ -190,9 +212,7 @@ namespace Jeu_du_pendu
 
             //DevinerMot(mot);
 
-            DevinerMot(mot);
-
-
+          //  DevinerMot(mot);
 
         }
     }
