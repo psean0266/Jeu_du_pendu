@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters;
+using System.Security.Cryptography.X509Certificates;
 using AsciiArt;
 
 namespace Jeu_du_pendu
@@ -150,12 +151,12 @@ namespace Jeu_du_pendu
 
         }
 
-        static char DemanderUneLettre()
+        static char DemanderUneLettre(string message = "Rentrez une lettre: ")
         {
       
             while (true)
             {
-                Console.Write ("Veuillez Rentrer une lettre: ");
+                Console.Write (message);
                 string reponse = Console.ReadLine();
                 if (reponse.Length == 1)
                 {
@@ -184,6 +185,30 @@ namespace Jeu_du_pendu
             return null;
         }
 
+        static bool DemanderDeRejouer()
+        {
+          
+            char reponse = DemanderUneLettre("Voulez-vous contineur (o/n) ? ");
+
+            if ((reponse == 'O') || (reponse == 'o'))
+            {
+                return true; // rejouer
+            }
+
+            else if ((reponse == 'n') || (reponse == 'N'))
+            {
+                return false;  // on sort
+            }
+
+            else
+            {
+                Console.WriteLine("Erreur : Vous devez repondre avec o ou n ");
+
+                return DemanderDeRejouer();
+
+            }
+        }
+
         static void Main(string[] args)
         {
             
@@ -196,12 +221,26 @@ namespace Jeu_du_pendu
             }
             else
             {
-                Random r = new Random();
-                int i =r.Next(mots.Length);
-                string mot = mots[i].Trim().Trim().ToUpper();
-                DevinerMot(mot);
+                while (true)
+                {
+                    Random r = new Random();
+                    int i = r.Next(mots.Length);
+                    string mot = mots[i].Trim().Trim().ToUpper();
+                    DevinerMot(mot);
+
+                    if (!DemanderDeRejouer())
+                    {
+                        break;
+                    }
+                  
+                  Console.Clear();  
+
+                }
+                Console.WriteLine();
+                Console.WriteLine("Merci d'avoir Jouer");
 
             }
+
           //  string mot = mots[0].Trim().ToUpper();
 
             //char lettre = DemanderUneLettre();
@@ -213,6 +252,8 @@ namespace Jeu_du_pendu
             //DevinerMot(mot);
 
           //  DevinerMot(mot);
+
+
 
         }
     }
